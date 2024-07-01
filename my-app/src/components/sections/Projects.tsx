@@ -156,15 +156,19 @@ export const ProjectsSection = () => {
                   <CardTitle>{project.title}</CardTitle>
                 </div>
                 <div className="flex space-x-2">
-                  <Avatar>
-                    <AvatarImage src={project.github} alt="GitHub Link" />
-                    <AvatarFallback>GH</AvatarFallback>
-                  </Avatar>
-                  {project.devpost && (
+                  <a href={project.github} target="_blank" rel="noopener noreferrer">
                     <Avatar>
-                      <AvatarImage src={project.devpost} alt="Devpost Link" />
-                      <AvatarFallback>DP</AvatarFallback>
+                      <AvatarImage src="/github.png" alt="GitHub Link" />
+                      <AvatarFallback>GH</AvatarFallback>
                     </Avatar>
+                  </a>
+                  {project.devpost && (
+                    <a href={project.devpost} target="_blank" rel="noopener noreferrer">
+                      <Avatar>
+                        <AvatarImage src="/devpost.png" alt="Devpost Link" />
+                        <AvatarFallback>DP</AvatarFallback>
+                      </Avatar>
+                    </a>
                   )}
                 </div>
               </div>
@@ -201,15 +205,19 @@ export const ProjectsSection = () => {
                         <CarouselNext />
                       </Carousel>
                       <div className="flex mt-4 space-x-4">
-                        <Avatar>
-                          <AvatarImage src={project.github} alt="GitHub Link" />
-                          <AvatarFallback>GH</AvatarFallback>
-                        </Avatar>
-                        {project.devpost && (
+                        <a href={project.github} target="_blank" rel="noopener noreferrer">
                           <Avatar>
-                            <AvatarImage src={project.devpost} alt="Devpost Link" />
-                            <AvatarFallback>DP</AvatarFallback>
+                            <AvatarImage src="/github.png" alt="GitHub Link" />
+                            <AvatarFallback>GH</AvatarFallback>
                           </Avatar>
+                        </a>
+                        {project.devpost && (
+                          <a href={project.devpost} target="_blank" rel="noopener noreferrer">
+                            <Avatar>
+                              <AvatarImage src="/devpost.png" alt="Devpost Link" />
+                              <AvatarFallback>DP</AvatarFallback>
+                            </Avatar>
+                          </a>
                         )}
                       </div>
                     </div>
@@ -244,15 +252,19 @@ export const ProjectsSection = () => {
                         <CarouselNext />
                       </Carousel>
                       <div className="flex mt-4 space-x-4">
-                        <Avatar>
-                          <AvatarImage src={project.github} alt="GitHub Link" />
-                          <AvatarFallback>GH</AvatarFallback>
-                        </Avatar>
-                        {project.devpost && (
+                        <a href={project.github} target="_blank" rel="noopener noreferrer">
                           <Avatar>
-                            <AvatarImage src={project.devpost} alt="Devpost Link" />
-                            <AvatarFallback>DP</AvatarFallback>
+                            <AvatarImage src="/github.png" alt="GitHub Link" />
+                            <AvatarFallback>GH</AvatarFallback>
                           </Avatar>
+                        </a>
+                        {project.devpost && (
+                          <a href={project.devpost} target="_blank" rel="noopener noreferrer">
+                            <Avatar>
+                              <AvatarImage src="/devpost.png" alt="Devpost Link" />
+                              <AvatarFallback>DP</AvatarFallback>
+                            </Avatar>
+                          </a>
                         )}
                       </div>
                     </div>
@@ -260,6 +272,11 @@ export const ProjectsSection = () => {
                       <DrawerClose asChild>
                         <Button variant="outline">Close</Button>
                       </DrawerClose>
+                      {project.badge && (
+                        <Badge variant="destructive" className="text-right whitespace-normal block">
+                          {project.badge}
+                        </Badge>
+                      )}
                     </DrawerFooter>
                   </DrawerContent>
                 </Drawer>
