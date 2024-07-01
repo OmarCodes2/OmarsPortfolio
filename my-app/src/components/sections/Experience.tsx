@@ -80,7 +80,7 @@ export const ExperienceSection = () => {
 	const isDesktop = useMediaQuery("(min-width: 768px)")
 
   return (
-    <section id="experience" className="p-8 flex flex-col justify-center items-center min-h-screen bg-gray-100">
+    <section id="experience" className="p-8 flex flex-col justify-center items-center min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">
       <h2 className="text-3xl font-bold mb-8">Experience</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-screen-lg">
         {experiences.map((experience, index) => (

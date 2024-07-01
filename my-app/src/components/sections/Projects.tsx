@@ -19,8 +19,7 @@ const projects = [
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
     ],
-    github: 'https://github.com/macshuttle',
-    devpost: 'https://devpost.com/software/macshuttle'
+    github: 'https://github.com/macshuttle'
   },
   {
     title: 'Critiqly',
@@ -41,12 +40,11 @@ const projects = [
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
     ],
-    github: 'https://github.com/caddie',
-    devpost: 'https://devpost.com/software/caddie'
+    github: 'https://github.com/caddie'
   },
   {
     title: 'Pawndr',
-    description: 'A pet adoption app. (Hackathon Winner)',
+    description: 'A pet adoption app.',
     images: [
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300',
@@ -64,8 +62,7 @@ const projects = [
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
     ],
-    github: 'https://github.com/certgen',
-    devpost: 'https://devpost.com/software/certgen'
+    github: 'https://github.com/certgen'
   },
   {
     title: 'AI Quiz Solver',
@@ -75,8 +72,7 @@ const projects = [
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
     ],
-    github: 'https://github.com/aiquizsolver',
-    devpost: 'https://devpost.com/software/aiquizsolver'
+    github: 'https://github.com/aiquizsolver'
   },
   {
     title: 'Island Generator',
@@ -86,12 +82,11 @@ const projects = [
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
     ],
-    github: 'https://github.com/islandgenerator',
-    devpost: 'https://devpost.com/software/islandgenerator'
+    github: 'https://github.com/islandgenerator'
   },
   {
     title: 'Verses',
-    description: 'A poetry sharing platform. (Hackathon Winner)',
+    description: 'A poetry sharing platform.',
     images: [
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300',
@@ -103,7 +98,7 @@ const projects = [
   },
   {
     title: 'Afk Student',
-    description: 'Tracks student activity. (Hackathon Winner)',
+    description: 'Tracks student activity.',
     images: [
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300',
@@ -121,8 +116,7 @@ const projects = [
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
     ],
-    github: 'https://github.com/lorisgrocer',
-    devpost: 'https://devpost.com/software/lorisgrocer'
+    github: 'https://github.com/lorisgrocer'
   },
   {
     title: 'Wavey',
@@ -143,8 +137,7 @@ const projects = [
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
     ],
-    github: 'https://github.com/studentcouncil',
-    devpost: 'https://devpost.com/software/studentcouncil'
+    github: 'https://github.com/studentcouncil'
   }
 ];
 
@@ -152,7 +145,7 @@ export const ProjectsSection = () => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   return (
-    <section id="projects" className="p-8 flex flex-col justify-center items-center min-h-screen bg-gray-100">
+    <section id="projects" className="p-8 flex flex-col justify-center items-center min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">
       <h2 className="text-3xl font-bold mb-8">Projects</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-screen-lg">
         {projects.map((project, index) => (
@@ -161,23 +154,24 @@ export const ProjectsSection = () => {
               <div className="flex items-center justify-between w-full">
                 <div className="flex items-center space-x-2">
                   <CardTitle>{project.title}</CardTitle>
-                  {project.badge && <Badge variant="outline">{project.badge}</Badge>}
                 </div>
                 <div className="flex space-x-2">
                   <Avatar>
                     <AvatarImage src={project.github} alt="GitHub Link" />
                     <AvatarFallback>GH</AvatarFallback>
                   </Avatar>
-                  <Avatar>
-                    <AvatarImage src={project.devpost} alt="Devpost Link" />
-                    <AvatarFallback>DP</AvatarFallback>
-                  </Avatar>
+                  {project.devpost && (
+                    <Avatar>
+                      <AvatarImage src={project.devpost} alt="Devpost Link" />
+                      <AvatarFallback>DP</AvatarFallback>
+                    </Avatar>
+                  )}
                 </div>
               </div>
               <CardDescription>{project.description}</CardDescription>
               <img src={project.images[0]} alt={project.title} className="w-full h-32 object-cover mt-4 rounded-t-lg" />
             </CardHeader>
-            <CardFooter>
+            <CardFooter className="flex justify-between items-center">
               {isDesktop ? (
                 <Dialog>
                   <DialogTrigger asChild>
@@ -211,10 +205,12 @@ export const ProjectsSection = () => {
                           <AvatarImage src={project.github} alt="GitHub Link" />
                           <AvatarFallback>GH</AvatarFallback>
                         </Avatar>
-                        <Avatar>
-                          <AvatarImage src={project.devpost} alt="Devpost Link" />
-                          <AvatarFallback>DP</AvatarFallback>
-                        </Avatar>
+                        {project.devpost && (
+                          <Avatar>
+                            <AvatarImage src={project.devpost} alt="Devpost Link" />
+                            <AvatarFallback>DP</AvatarFallback>
+                          </Avatar>
+                        )}
                       </div>
                     </div>
                   </DialogContent>
@@ -252,19 +248,26 @@ export const ProjectsSection = () => {
                           <AvatarImage src={project.github} alt="GitHub Link" />
                           <AvatarFallback>GH</AvatarFallback>
                         </Avatar>
-                        <Avatar>
-                          <AvatarImage src={project.devpost} alt="Devpost Link" />
-                          <AvatarFallback>DP</AvatarFallback>
-                        </Avatar>
+                        {project.devpost && (
+                          <Avatar>
+                            <AvatarImage src={project.devpost} alt="Devpost Link" />
+                            <AvatarFallback>DP</AvatarFallback>
+                          </Avatar>
+                        )}
                       </div>
                     </div>
-                    <DrawerFooter>
+                    <DrawerFooter className="flex justify-between items-center">
                       <DrawerClose asChild>
                         <Button variant="outline">Close</Button>
                       </DrawerClose>
                     </DrawerFooter>
                   </DrawerContent>
                 </Drawer>
+              )}
+              {project.badge && (
+                <Badge className="ml-auto text-right whitespace-normal block">
+                  {project.badge}
+                </Badge>
               )}
             </CardFooter>
           </Card>
