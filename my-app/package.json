@@ -21,6 +21,7 @@
     "@uidotdev/usehooks": "^2.4.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "embla-carousel-autoplay": "^8.1.6",
     "embla-carousel-react": "^8.1.6",
     "leva": "^0.9.35",
     "lucide-react": "^0.399.0",
