@@ -17,7 +17,7 @@ export const NavBar = () => {
   return (
     <nav className="sticky top-0 z-50 bg-white shadow-md">
       <div className="container mx-auto flex justify-between items-center p-4">
-        <div className="text-xl font-bold">Omar</div>
+        <div className="text-xl font-bold">Omar's Portfolio</div>
         <div className="md:hidden">
           <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 focus:outline-none">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -49,6 +49,13 @@ export const NavBar = () => {
                 <NavigationMenuTrigger>
                   <NavigationMenuLink href="https://www.linkedin.com/in/omarbakr03/" target="_blank" rel="noopener noreferrer">
                     LinkedIn
+                  </NavigationMenuLink>
+                </NavigationMenuTrigger>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>
+                  <NavigationMenuLink href="https://github.com/omarbakr03" target="_blank" rel="noopener noreferrer">
+                    GitHub
                   </NavigationMenuLink>
                 </NavigationMenuTrigger>
               </NavigationMenuItem>
