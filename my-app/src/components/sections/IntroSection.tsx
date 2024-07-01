@@ -64,8 +64,8 @@ export const IntroSection = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselPrevious style={{ display: 'none' }} />
+          <CarouselNext style={{ display: 'none' }} />
         </Carousel>
       </div>
     </section>

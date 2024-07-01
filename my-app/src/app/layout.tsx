@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Omar Bakr's Portfolio",
+  title: "Omar Bakr | swe",
   description: "Made by Omar Bakr",
 };
 
@@ -16,6 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/omar.png" />
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   );
