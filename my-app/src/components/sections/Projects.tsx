@@ -8,7 +8,7 @@ import { Button } from '../ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Badge } from '../ui/badge';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../ui/carousel';
-import { useMediaQuery } from "@uidotdev/usehooks";
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { motion, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -182,13 +182,13 @@ const cardVariant: Variants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 1.5,  // Slowing down the animation speed
+      duration: 1.5,
     },
   },
 };
 
 export const ProjectsSection: React.FC = () => {
-  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const isDesktop = useMediaQuery('(min-width:768px)');
 
   return (
     <section id="projects" className="p-8 flex flex-col justify-center items-center min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">

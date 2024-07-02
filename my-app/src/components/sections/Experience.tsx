@@ -5,7 +5,7 @@ import { Card, CardHeader, CardContent, CardFooter, CardTitle, CardDescription }
 import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from '../ui/drawer';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog';
 import { Button } from '../ui/button';
-import { useMediaQuery } from "@uidotdev/usehooks";
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { motion, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -90,7 +90,7 @@ const cardVariant: Variants = {
 };
 
 export const ExperienceSection: React.FC = () => {
-  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const isDesktop = useMediaQuery('(min-width:768px)');
 
   return (
     <section id="experience" className="p-8 flex flex-col justify-center items-center min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">
