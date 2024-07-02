@@ -9,6 +9,8 @@ import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Badge } from '../ui/badge';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../ui/carousel';
 import { useMediaQuery } from "@uidotdev/usehooks";
+import { motion, Variants } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 const projects = [
   {
@@ -174,154 +176,181 @@ const projects = [
   }
 ];
 
-export const ProjectsSection = () => {
+const cardVariant: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1.5,  // Slowing down the animation speed
+    },
+  },
+};
+
+export const ProjectsSection: React.FC = () => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   return (
     <section id="projects" className="p-8 flex flex-col justify-center items-center min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">
       <h2 className="text-3xl font-bold mb-8">Projects</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-screen-lg">
-        {projects.map((project, index) => (
-          <Card key={index} className="shadow-lg">
-            <CardHeader className="flex flex-col items-start">
-              <div className="flex items-center justify-between w-full">
-                <div className="flex items-center space-x-2">
-                  <CardTitle>{project.title}</CardTitle>
-                </div>
-                <div className="flex space-x-2">
-                  <a href={project.github} target="_blank" rel="noopener noreferrer">
-                    <Avatar>
-                      <AvatarImage src="/github.png" alt="GitHub Link" />
-                      <AvatarFallback>GH</AvatarFallback>
-                    </Avatar>
-                  </a>
-                  {project.devpost && (
-                    <a href={project.devpost} target="_blank" rel="noopener noreferrer">
-                      <Avatar>
-                        <AvatarImage src="/devpost.png" alt="Devpost Link" />
-                        <AvatarFallback>DP</AvatarFallback>
-                      </Avatar>
-                    </a>
-                  )}
-                </div>
-              </div>
-              <CardDescription>{project.description}</CardDescription>
-              <img src={project.images[0]} alt={project.title} className="w-full h-32 object-cover mt-4 rounded-t-lg" />
-            </CardHeader>
-            <CardFooter className="flex justify-between items-center">
-              {isDesktop ? (
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button variant="outline">Learn More</Button>
-                  </DialogTrigger>
-                  <DialogContent>
-                    <DialogHeader>
-                      <DialogTitle>{project.title}</DialogTitle>
-                      <DialogDescription>{project.description}</DialogDescription>
-                    </DialogHeader>
-                    <div className="flex flex-col items-center p-4">
-                      <Carousel className="w-full max-w-xs">
-                        <CarouselContent>
-                          {project.images.map((image, i) => (
-                            <CarouselItem key={i}>
-                              <div className="p-1">
-                                <Card>
-                                  <CardContent className="flex aspect-square items-center justify-center p-6">
-                                    <img src={image} alt={`Project ${index + 1} Image ${i + 1}`} className="w-full h-full object-cover rounded" />
-                                  </CardContent>
-                                </Card>
-                              </div>
-                            </CarouselItem>
-                          ))}
-                        </CarouselContent>
-                        <CarouselPrevious />
-                        <CarouselNext />
-                      </Carousel>
-                      <div className="flex mt-4 space-x-4">
-                        <a href={project.github} target="_blank" rel="noopener noreferrer">
+        {projects.map((project, index) => {
+          const { ref, inView } = useInView({
+            triggerOnce: true,
+            threshold: 0.1,
+          });
+
+          return (
+            <motion.div
+              key={index}
+              ref={ref}
+              initial="hidden"
+              animate={inView ? "visible" : "hidden"}
+              variants={cardVariant}
+              custom={index}
+            >
+              <Card className="shadow-lg">
+                <CardHeader className="flex flex-col items-start">
+                  <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center space-x-2">
+                      <CardTitle>{project.title}</CardTitle>
+                    </div>
+                    <div className="flex space-x-2">
+                      <a href={project.github} target="_blank" rel="noopener noreferrer">
+                        <Avatar>
+                          <AvatarImage src="/github.png" alt="GitHub Link" />
+                          <AvatarFallback>GH</AvatarFallback>
+                        </Avatar>
+                      </a>
+                      {project.devpost && (
+                        <a href={project.devpost} target="_blank" rel="noopener noreferrer">
                           <Avatar>
-                            <AvatarImage src="/github.png" alt="GitHub Link" />
-                            <AvatarFallback>GH</AvatarFallback>
+                            <AvatarImage src="/devpost.png" alt="Devpost Link" />
+                            <AvatarFallback>DP</AvatarFallback>
                           </Avatar>
                         </a>
-                        {project.devpost && (
-                          <a href={project.devpost} target="_blank" rel="noopener noreferrer">
-                            <Avatar>
-                              <AvatarImage src="/devpost.png" alt="Devpost Link" />
-                              <AvatarFallback>DP</AvatarFallback>
-                            </Avatar>
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  </DialogContent>
-                </Dialog>
-              ) : (
-                <Drawer>
-                  <DrawerTrigger asChild>
-                    <Button variant="outline">Learn More</Button>
-                  </DrawerTrigger>
-                  <DrawerContent>
-                    <DrawerHeader>
-                      <DrawerTitle>{project.title}</DrawerTitle>
-                      <DrawerDescription>{project.description}</DrawerDescription>
-                    </DrawerHeader>
-                    <div className="flex flex-col items-center p-4">
-                      <Carousel className="w-full max-w-xs">
-                        <CarouselContent>
-                          {project.images.map((image, i) => (
-                            <CarouselItem key={i}>
-                              <div className="p-1">
-                                <Card>
-                                  <CardContent className="flex aspect-square items-center justify-center p-6">
-                                    <img src={image} alt={`Project ${index + 1} Image ${i + 1}`} className="w-full h-full object-cover rounded" />
-                                  </CardContent>
-                                </Card>
-                              </div>
-                            </CarouselItem>
-                          ))}
-                        </CarouselContent>
-                        <CarouselPrevious />
-                        <CarouselNext />
-                      </Carousel>
-                      <div className="flex mt-4 space-x-4">
-                        <a href={project.github} target="_blank" rel="noopener noreferrer">
-                          <Avatar>
-                            <AvatarImage src="/github.png" alt="GitHub Link" />
-                            <AvatarFallback>GH</AvatarFallback>
-                          </Avatar>
-                        </a>
-                        {project.devpost && (
-                          <a href={project.devpost} target="_blank" rel="noopener noreferrer">
-                            <Avatar>
-                              <AvatarImage src="/devpost.png" alt="Devpost Link" />
-                              <AvatarFallback>DP</AvatarFallback>
-                            </Avatar>
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                    <DrawerFooter className="flex justify-between items-center">
-                      <DrawerClose asChild>
-                        <Button variant="outline">Close</Button>
-                      </DrawerClose>
-                      {project.badge && (
-                        <Badge variant="destructive" className="text-right whitespace-normal block">
-                          {project.badge}
-                        </Badge>
                       )}
-                    </DrawerFooter>
-                  </DrawerContent>
-                </Drawer>
-              )}
-              {project.badge && (
-                <Badge className="ml-auto text-right whitespace-normal block">
-                  {project.badge}
-                </Badge>
-              )}
-            </CardFooter>
-          </Card>
-        ))}
+                    </div>
+                  </div>
+                  <CardDescription>{project.description}</CardDescription>
+                  <img src={project.images[0]} alt={project.title} className="w-full h-32 object-cover mt-4 rounded-t-lg" />
+                </CardHeader>
+                <CardFooter className="flex justify-between items-center">
+                  {isDesktop ? (
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button variant="outline">Learn More</Button>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle>{project.title}</DialogTitle>
+                          <DialogDescription>{project.description}</DialogDescription>
+                        </DialogHeader>
+                        <div className="flex flex-col items-center p-4">
+                          <Carousel className="w-full max-w-xs">
+                            <CarouselContent>
+                              {project.images.map((image, i) => (
+                                <CarouselItem key={i}>
+                                  <div className="p-1">
+                                    <Card>
+                                      <CardContent className="flex aspect-square items-center justify-center p-6">
+                                        <img src={image} alt={`Project ${index + 1} Image ${i + 1}`} className="w-full h-full object-cover rounded" />
+                                      </CardContent>
+                                    </Card>
+                                  </div>
+                                </CarouselItem>
+                              ))}
+                            </CarouselContent>
+                            <CarouselPrevious />
+                            <CarouselNext />
+                          </Carousel>
+                          <div className="flex mt-4 space-x-4">
+                            <a href={project.github} target="_blank" rel="noopener noreferrer">
+                              <Avatar>
+                                <AvatarImage src="/github.png" alt="GitHub Link" />
+                                <AvatarFallback>GH</AvatarFallback>
+                              </Avatar>
+                            </a>
+                            {project.devpost && (
+                              <a href={project.devpost} target="_blank" rel="noopener noreferrer">
+                                <Avatar>
+                                  <AvatarImage src="/devpost.png" alt="Devpost Link" />
+                                  <AvatarFallback>DP</AvatarFallback>
+                                </Avatar>
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  ) : (
+                    <Drawer>
+                      <DrawerTrigger asChild>
+                        <Button variant="outline">Learn More</Button>
+                      </DrawerTrigger>
+                      <DrawerContent>
+                        <DrawerHeader>
+                          <DrawerTitle>{project.title}</DrawerTitle>
+                          <DrawerDescription>{project.description}</DrawerDescription>
+                        </DrawerHeader>
+                        <div className="flex flex-col items-center p-4">
+                          <Carousel className="w-full max-w-xs">
+                            <CarouselContent>
+                              {project.images.map((image, i) => (
+                                <CarouselItem key={i}>
+                                  <div className="p-1">
+                                    <Card>
+                                      <CardContent className="flex aspect-square items-center justify-center p-6">
+                                        <img src={image} alt={`Project ${index + 1} Image ${i + 1}`} className="w-full h-full object-cover rounded" />
+                                      </CardContent>
+                                    </Card>
+                                  </div>
+                                </CarouselItem>
+                              ))}
+                            </CarouselContent>
+                            <CarouselPrevious />
+                            <CarouselNext />
+                          </Carousel>
+                          <div className="flex mt-4 space-x-4">
+                            <a href={project.github} target="_blank" rel="noopener noreferrer">
+                              <Avatar>
+                                <AvatarImage src="/github.png" alt="GitHub Link" />
+                                <AvatarFallback>GH</AvatarFallback>
+                              </Avatar>
+                            </a>
+                            {project.devpost && (
+                              <a href={project.devpost} target="_blank" rel="noopener noreferrer">
+                                <Avatar>
+                                  <AvatarImage src="/devpost.png" alt="Devpost Link" />
+                                  <AvatarFallback>DP</AvatarFallback>
+                                </Avatar>
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                        <DrawerFooter className="flex justify-between items-center">
+                          <DrawerClose asChild>
+                            <Button variant="outline">Close</Button>
+                          </DrawerClose>
+                          {project.badge && (
+                            <Badge variant="destructive" className="text-right whitespace-normal block">
+                              {project.badge}
+                            </Badge>
+                          )}
+                        </DrawerFooter>
+                      </DrawerContent>
+                    </Drawer>
+                  )}
+                  {project.badge && (
+                    <Badge className="ml-auto text-right whitespace-normal block">
+                      {project.badge}
+                    </Badge>
+                  )}
+                </CardFooter>
+              </Card>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );

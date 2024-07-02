@@ -6,6 +6,8 @@ import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, Dr
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog';
 import { Button } from '../ui/button';
 import { useMediaQuery } from "@uidotdev/usehooks";
+import { motion, Variants } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 const experiences = [
   {
@@ -76,69 +78,96 @@ const experiences = [
   }
 ];
 
-export const ExperienceSection = () => {
+const cardVariant: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1.5,
+    },
+  },
+};
+
+export const ExperienceSection: React.FC = () => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   return (
     <section id="experience" className="p-8 flex flex-col justify-center items-center min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">
       <h2 className="text-3xl font-bold mb-8">Experience</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-screen-lg">
-        {experiences.map((experience, index) => (
-          <Card key={index} className="shadow-lg">
-            <CardHeader>
-              <img src={experience.imageUrl} alt={experience.title} className="w-full h-32 object-cover mb-4 rounded-t-lg" />
-              <CardTitle>{experience.title}</CardTitle>
-              <CardDescription>{experience.description}</CardDescription>
-              <p className="text-sm text-gray-500 mt-2">{experience.duration}</p>
-            </CardHeader>
-            <CardFooter>
-              {isDesktop ? (
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button variant="outline">Learn More</Button>
-                  </DialogTrigger>
-                  <DialogContent>
-                    <DialogHeader>
-                      <DialogTitle>{experience.title}</DialogTitle>
-                      <DialogDescription>{experience.description}</DialogDescription>
-                    </DialogHeader>
-                    <div className="p-4">
-                      <ul className="list-disc ml-4">
-                        {experience.details.map((detail, i) => (
-                          <li key={i}>{detail}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </DialogContent>
-                </Dialog>
-              ) : (
-                <Drawer>
-                  <DrawerTrigger asChild>
-                    <Button variant="outline">Learn More</Button>
-                  </DrawerTrigger>
-                  <DrawerContent>
-                    <DrawerHeader>
-                      <DrawerTitle>{experience.title}</DrawerTitle>
-                      <DrawerDescription>{experience.description}</DrawerDescription>
-                    </DrawerHeader>
-                    <div className="p-4">
-                      <ul className="list-disc ml-4">
-                        {experience.details.map((detail, i) => (
-                          <li key={i}>{detail}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <DrawerFooter>
-                      <DrawerClose asChild>
-                        <Button variant="outline">Close</Button>
-                      </DrawerClose>
-                    </DrawerFooter>
-                  </DrawerContent>
-                </Drawer>
-              )}
-            </CardFooter>
-          </Card>
-        ))}
+        {experiences.map((experience, index) => {
+          const { ref, inView } = useInView({
+            triggerOnce: true,
+            threshold: 0.1,
+          });
+
+          return (
+            <motion.div
+              key={index}
+              ref={ref}
+              initial="hidden"
+              animate={inView ? "visible" : "hidden"}
+              variants={cardVariant}
+              custom={index}
+            >
+              <Card className="shadow-lg">
+                <CardHeader>
+                  <img src={experience.imageUrl} alt={experience.title} className="w-full h-32 object-cover mb-4 rounded-t-lg" />
+                  <CardTitle>{experience.title}</CardTitle>
+                  <CardDescription>{experience.description}</CardDescription>
+                  <p className="text-sm text-gray-500 mt-2">{experience.duration}</p>
+                </CardHeader>
+                <CardFooter>
+                  {isDesktop ? (
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button variant="outline">Learn More</Button>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle>{experience.title}</DialogTitle>
+                          <DialogDescription>{experience.description}</DialogDescription>
+                        </DialogHeader>
+                        <div className="p-4">
+                          <ul className="list-disc ml-4">
+                            {experience.details.map((detail, i) => (
+                              <li key={i}>{detail}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  ) : (
+                    <Drawer>
+                      <DrawerTrigger asChild>
+                        <Button variant="outline">Learn More</Button>
+                      </DrawerTrigger>
+                      <DrawerContent>
+                        <DrawerHeader>
+                          <DrawerTitle>{experience.title}</DrawerTitle>
+                          <DrawerDescription>{experience.description}</DrawerDescription>
+                        </DrawerHeader>
+                        <div className="p-4">
+                          <ul className="list-disc ml-4">
+                            {experience.details.map((detail, i) => (
+                              <li key={i}>{detail}</li>
+                            ))}
+                          </ul>
+                        </div>
+                        <DrawerFooter>
+                          <DrawerClose asChild>
+                            <Button variant="outline">Close</Button>
+                          </DrawerClose>
+                        </DrawerFooter>
+                      </DrawerContent>
+                    </Drawer>
+                  )}
+                </CardFooter>
+              </Card>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );
