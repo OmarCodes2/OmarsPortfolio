@@ -8,11 +8,14 @@ import {
 } from "@/components/ui/carousel";
 
 const images = [
-  { src: "https://via.placeholder.com/400x300", label: "Student" },
-  { src: "https://via.placeholder.com/400x300", label: "Speaker" },
-  { src: "https://via.placeholder.com/400x300", label: "Developer" },
-  { src: "https://via.placeholder.com/400x300", label: "Designer" },
-  { src: "https://via.placeholder.com/400x300", label: "Leader" },
+  { src: "/student.png", label: "Student" },
+  { src: "/coop.png", label: "Coop" },
+  { src: "/leader.png", label: "Leader" },
+  { src: "/hacker.png", label: "Hacker" },
+  { src: "/speaker.png", label: "Speaker" },
+  { src: "/foodie.png", label: "Foodie" },
+  { src: "/sportsman.png", label: "Sportsman" },
+  { src: "/friend.png", label: "Friend" },
 ];
 
 export const IntroSection = () => {
@@ -32,10 +35,10 @@ export const IntroSection = () => {
       <div className="flex flex-col justify-center items-start md:mr-16 mb-8 md:mb-0">
         <h1 className="text-4xl font-bold">Welcome to My Portfolio</h1>
         <p className="mt-4 text-lg flex flex-wrap justify-center md:justify-start">
-          I am a 
+          I am a
           <span 
             className={`font-semibold ml-2 inline-block`}
-            style={{ width: '120px', whiteSpace: 'nowrap', overflow: 'hidden' }}
+            style={{ width: '115px', whiteSpace: 'nowrap', overflow: 'hidden', textAlign: 'center' }}
           >
             <span className="roll-up" key={currentIndex}>
               {images[currentIndex].label}

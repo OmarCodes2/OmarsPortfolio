@@ -55,7 +55,7 @@ import {
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>
-                    <NavigationMenuLink href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                    <NavigationMenuLink href="https://drive.google.com/file/d/18TcrSgDz3v58U_oAPduljoqX9DPhh411/view?usp=sharing" target="_blank" rel="noopener noreferrer">
                       Resume
                     </NavigationMenuLink>
                   </NavigationMenuTrigger>
@@ -69,7 +69,7 @@ import {
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>
-                    <NavigationMenuLink href="https://github.com/omarbakr03" target="_blank" rel="noopener noreferrer">
+                    <NavigationMenuLink href="https://github.com/OmarCodes2" target="_blank" rel="noopener noreferrer">
                       GitHub
                     </NavigationMenuLink>
                   </NavigationMenuTrigger>
