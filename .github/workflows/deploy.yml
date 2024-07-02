@@ -26,10 +26,6 @@ jobs:
         run: NEXT_PUBLIC_DISABLE_ESLINT=true npm run build
         working-directory: ./my-app
 
-      - name: Export static site
-        run: npm run export
-        working-directory: ./my-app
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
