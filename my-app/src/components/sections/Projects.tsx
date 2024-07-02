@@ -55,26 +55,6 @@ const projects = [
     badge: 'Hackathon Winner'
   },
   {
-    title: 'Certificate Generator',
-    description: 'Automatically generates certificates.',
-    images: [
-      'https://via.placeholder.com/400x300',
-      'https://via.placeholder.com/400x300',
-      'https://via.placeholder.com/400x300'
-    ],
-    github: 'https://github.com/certgen'
-  },
-  {
-    title: 'AI Quiz Solver',
-    description: 'Solves quizzes using AI.',
-    images: [
-      'https://via.placeholder.com/400x300',
-      'https://via.placeholder.com/400x300',
-      'https://via.placeholder.com/400x300'
-    ],
-    github: 'https://github.com/aiquizsolver'
-  },
-  {
     title: 'Island Generator',
     description: 'Generates random islands.',
     images: [
@@ -109,6 +89,49 @@ const projects = [
     badge: 'Hackathon Winner'
   },
   {
+    title: 'StudyComb',
+    description: 'A study companion app.',
+    images: [
+      'https://via.placeholder.com/400x300',
+      'https://via.placeholder.com/400x300',
+      'https://via.placeholder.com/400x300'
+    ],
+    github: 'https://github.com/studycomb',
+    devpost: 'https://devpost.com/software/studycomb',
+    badge: 'Hackathon Winner'
+  },
+  {
+    title: 'RoomE',
+    description: 'A room management system.',
+    images: [
+      'https://via.placeholder.com/400x300',
+      'https://via.placeholder.com/400x300',
+      'https://via.placeholder.com/400x300'
+    ],
+    github: 'https://github.com/roome',
+    devpost: 'https://devpost.com/software/roome'
+  },
+  {
+    title: 'Certificate Generator',
+    description: 'Automatically generates certificates.',
+    images: [
+      'https://via.placeholder.com/400x300',
+      'https://via.placeholder.com/400x300',
+      'https://via.placeholder.com/400x300'
+    ],
+    github: 'https://github.com/certgen'
+  },
+  {
+    title: 'AI Quiz Solver',
+    description: 'Solves quizzes using AI.',
+    images: [
+      'https://via.placeholder.com/400x300',
+      'https://via.placeholder.com/400x300',
+      'https://via.placeholder.com/400x300'
+    ],
+    github: 'https://github.com/aiquizsolver'
+  },
+  {
     title: 'Lori\'s Grocer',
     description: 'A grocery management system.',
     images: [
@@ -138,6 +161,16 @@ const projects = [
       'https://via.placeholder.com/400x300'
     ],
     github: 'https://github.com/studentcouncil'
+  },
+  {
+    title: 'Portfolio',
+    description: 'A personal portfolio website.',
+    images: [
+      'https://via.placeholder.com/400x300',
+      'https://via.placeholder.com/400x300',
+      'https://via.placeholder.com/400x300'
+    ],
+    github: 'https://github.com/portfolio'
   }
 ];
 
