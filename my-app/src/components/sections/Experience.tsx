@@ -9,75 +9,75 @@ import { useMediaQuery } from "@uidotdev/usehooks";
 
 const experiences = [
   {
-    title: 'AdMass',
-    description: 'Managed ad campaigns for various clients.',
-    details: [
-      'Increased client engagement by 20%.',
-      'Collaborated with the design team to create effective ads.',
-      'Conducted market research to identify target demographics.',
-    ],
-    imageUrl: 'https://via.placeholder.com/150',
-    duration: 'Jan 2020 - Dec 2020'
-  },
-  {
-    title: 'Prolancify',
-    description: 'Developed and maintained web applications.',
-    details: [
-      'Implemented new features based on user feedback.',
-      'Ensured high performance and responsiveness of applications.',
-      'Collaborated with cross-functional teams to define project requirements.',
-    ],
-    imageUrl: 'https://via.placeholder.com/150',
-    duration: 'Jan 2021 - Present'
-  },
-  {
-    title: 'FirstHX',
-    description: 'Conducted market research to identify new opportunities.',
-    details: [
-      'Developed marketing strategies to increase brand awareness.',
-      'Analyzed data to track campaign performance and optimize strategies.',
-      'Created and presented reports to stakeholders.',
-    ],
-    imageUrl: 'https://via.placeholder.com/150',
-    duration: 'Feb 2019 - Dec 2019'
-  },
-  {
-    title: 'Vidyard',
-    description: 'Worked on video content creation and editing.',
-    details: [
-      'Collaborated with the marketing team to develop video campaigns.',
-      'Increased video views and engagement by 30%.',
-      'Edited and produced high-quality video content.',
-    ],
-    imageUrl: 'https://via.placeholder.com/150',
-    duration: 'Mar 2020 - Dec 2020'
-  },
-  {
     title: 'Canada Life',
-    description: 'Assisted in developing financial plans for clients.',
+    description: 'Software Developer',
     details: [
       'Conducted financial analysis and prepared reports.',
       'Provided support to senior financial advisors.',
       'Helped clients understand their financial options.',
     ],
-    imageUrl: 'https://via.placeholder.com/150',
-    duration: 'Jan 2018 - Feb 2019'
+    imageUrl: '/canadalife.png',
+    duration: 'May 2024 - August 2024'
+  },
+  {
+    title: 'Vidyard',
+    description: 'Software Developer',
+    details: [
+      'Collaborated with the marketing team to develop video campaigns.',
+      'Increased video views and engagement by 30%.',
+      'Edited and produced high-quality video content.',
+    ],
+    imageUrl: '/vidyard.png',
+    duration: 'January 2024 - April 2024'
+  },
+  {
+    title: 'FirstHX',
+    description: 'Junior Software Developer',
+    details: [
+      'Developed marketing strategies to increase brand awareness.',
+      'Analyzed data to track campaign performance and optimize strategies.',
+      'Created and presented reports to stakeholders.',
+    ],
+    imageUrl: '/firsthx.png',
+    duration: 'May 2023 - Dec 2023'
+  },
+  {
+    title: 'Prolancify',
+    description: 'Full-Stack Developer, API Integrations',
+    details: [
+      'Implemented new features based on user feedback.',
+      'Ensured high performance and responsiveness of applications.',
+      'Collaborated with cross-functional teams to define project requirements.',
+    ],
+    imageUrl: '/prolancify.png',
+    duration: 'January 2023 - March 2023'
+  },
+  {
+    title: 'AdMass',
+    description: 'Full-stack Developer',
+    details: [
+      'Increased client engagement by 20%.',
+      'Collaborated with the design team to create effective ads.',
+      'Conducted market research to identify target demographics.',
+    ],
+    imageUrl: '/admass.png',
+    duration: 'October 2022 - January 2023'
   },
   {
     title: 'McMaster Design League',
-    description: 'Leading a team of 60 people.',
+    description: 'Co President',
     details: [
       'Organized and managed design competitions and workshops.',
       'Fostered a collaborative and creative team environment.',
       'Mentored team members and provided guidance.',
     ],
-    imageUrl: 'https://via.placeholder.com/150',
-    duration: 'Sep 2019 - Present'
+    imageUrl: '/mdl.png',
+    duration: 'July 2022 - Present'
   }
 ];
 
 export const ExperienceSection = () => {
-	const isDesktop = useMediaQuery("(min-width: 768px)")
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   return (
     <section id="experience" className="p-8 flex flex-col justify-center items-center min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">

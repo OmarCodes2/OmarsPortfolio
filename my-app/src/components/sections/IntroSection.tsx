@@ -31,23 +31,25 @@ export const IntroSection = () => {
   }, []);
 
   return (
-    <section id="intro" className="p-8 flex flex-col md:flex-row justify-center items-center text-center md:text-left" style={{ minHeight: 'calc(100vh - 64px)' }}>
-      <div className="flex flex-col justify-center items-start md:mr-16 mb-8 md:mb-0">
+    <section id="intro" className="p-8 flex flex-col md:flex-row justify-center items-center text-center md:text-left mx-auto" style={{ minHeight: 'calc(100vh - 64px)' }}>
+      <div className="flex flex-col justify-center items-center md:items-start md:mr-8 mb-8 md:mb-0 md:w-2/5">
         <h1 className="text-4xl font-bold">Welcome to My Portfolio</h1>
         <p className="mt-4 text-lg flex flex-wrap justify-center md:justify-start">
-          I am a
+          <span className="text-2xl mr-2">I am a</span>
           <span 
-            className={`font-semibold ml-2 inline-block`}
-            style={{ width: '115px', whiteSpace: 'nowrap', overflow: 'hidden', textAlign: 'center' }}
+            className="font-semibold text-2xl inline-block"
+            style={{ whiteSpace: 'nowrap', overflow: 'hidden', textAlign: 'center' }}
           >
             <span className="roll-up" key={currentIndex}>
               {images[currentIndex].label}
             </span>
-          </span> 
-          passionate about coding and technology.
+          </span>
+        </p>
+        <p className="mt-4 text-lg text-center md:text-left">
+          passionate about coding and technology and looking to make the world a better place.
         </p>
       </div>
-      <div className="w-full max-w-xs md:max-w-md">
+      <div className="w-full max-w-xs md:max-w-md md:w-2/5">
         <Carousel
           plugins={[plugin.current]}
           className="w-full"
