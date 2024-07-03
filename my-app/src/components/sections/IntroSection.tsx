@@ -9,7 +9,7 @@ import {
 import { motion } from 'framer-motion';
 
 const images = [
-  { src: "/student.png", label: "Student" },
+  { src: "./student.png", label: "Student" },
   { src: "/coop.png", label: "Coop" },
   { src: "/leader.png", label: "Leader" },
   { src: "/hacker.png", label: "Hacker" },
