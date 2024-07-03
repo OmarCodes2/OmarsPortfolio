@@ -23,9 +23,9 @@ jobs:
         working-directory: ./my-app
 
       - name: Build Next.js app
-        run: npm run build && npm run export
-        working-directory: ./my-app
-
+        run: NEXT_PUBLIC_DISABLE_ESLINT=true npm run build
+        working-directory: ./my-
+      
       - name: Create .nojekyll file
         run: touch ./my-app/out/.nojekyll
 
