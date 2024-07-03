@@ -23,8 +23,14 @@ jobs:
         working-directory: ./my-app
 
       - name: Build Next.js app
-        run: NEXT_PUBLIC_DISABLE_ESLINT=true npm run build
+        run: npm run build && npm run export
         working-directory: ./my-app
+
+      - name: Create .nojekyll file
+        run: touch ./my-app/out/.nojekyll
+
+      - name: Create CNAME file
+        run: echo 'www.omarswe.com' > ./my-app/out/CNAME
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
