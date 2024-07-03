@@ -10,13 +10,13 @@ import { motion } from 'framer-motion';
 
 const images = [
   { src: "./student.png", label: "Student" },
-  { src: "/coop.png", label: "Coop" },
-  { src: "/leader.png", label: "Leader" },
-  { src: "/hacker.png", label: "Hacker" },
-  { src: "/speaker.png", label: "Speaker" },
-  { src: "/foodie.png", label: "Foodie" },
-  { src: "/sportsman.png", label: "Sportsman" },
-  { src: "/friend.png", label: "Friend" },
+  { src: "./coop.png", label: "Coop" },
+  { src: "./leader.png", label: "Leader" },
+  { src: "./hacker.png", label: "Hacker" },
+  { src: "./speaker.png", label: "Speaker" },
+  { src: "./foodie.png", label: "Foodie" },
+  { src: "./sportsman.png", label: "Sportsman" },
+  { src: "./friend.png", label: "Friend" },
 ];
 
 const textVariant = {

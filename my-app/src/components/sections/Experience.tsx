@@ -18,7 +18,7 @@ const experiences = [
       'Provided support to senior financial advisors.',
       'Helped clients understand their financial options.',
     ],
-    imageUrl: '/canadalife.png',
+    imageUrl: './canadalife.png',
     duration: 'May 2024 - August 2024'
   },
   {
@@ -29,7 +29,7 @@ const experiences = [
       'Increased video views and engagement by 30%.',
       'Edited and produced high-quality video content.',
     ],
-    imageUrl: '/vidyard.png',
+    imageUrl: './vidyard.png',
     duration: 'January 2024 - April 2024'
   },
   {
@@ -40,7 +40,7 @@ const experiences = [
       'Analyzed data to track campaign performance and optimize strategies.',
       'Created and presented reports to stakeholders.',
     ],
-    imageUrl: '/firsthx.png',
+    imageUrl: './firsthx.png',
     duration: 'May 2023 - Dec 2023'
   },
   {
@@ -51,7 +51,7 @@ const experiences = [
       'Ensured high performance and responsiveness of applications.',
       'Collaborated with cross-functional teams to define project requirements.',
     ],
-    imageUrl: '/prolancify.png',
+    imageUrl: './prolancify.png',
     duration: 'January 2023 - March 2023'
   },
   {
@@ -62,7 +62,7 @@ const experiences = [
       'Collaborated with the design team to create effective ads.',
       'Conducted market research to identify target demographics.',
     ],
-    imageUrl: '/admass.png',
+    imageUrl: './admass.png',
     duration: 'October 2022 - January 2023'
   },
   {
@@ -73,7 +73,7 @@ const experiences = [
       'Fostered a collaborative and creative team environment.',
       'Mentored team members and provided guidance.',
     ],
-    imageUrl: '/mdl.png',
+    imageUrl: './mdl.png',
     duration: 'July 2022 - Present'
   }
 ];
