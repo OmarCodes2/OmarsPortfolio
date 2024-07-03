@@ -71,8 +71,6 @@ export const IntroSection = () => {
         <Carousel
           plugins={[plugin.current]}
           className="w-full"
-          onMouseEnter={plugin.current.stop}
-          onMouseLeave={plugin.current.reset}
         >
           <CarouselContent>
             {images.map((image, index) => (
