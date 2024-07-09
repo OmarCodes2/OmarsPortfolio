@@ -102,7 +102,7 @@ const projects: Project[] = [
   },
   {
     title: 'Afk Student',
-    description: 'Informs you when your name gets called in a meeting through a call and SMS message.',
+    description: 'Alerts  you when your name gets called in a meeting.',
     coverImage: 'https://via.placeholder.com/400x300',
     images: [
       'https://via.placeholder.com/400x300',
