@@ -55,7 +55,7 @@ import {
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>
-                    <NavigationMenuLink href="https://drive.google.com/file/d/18TcrSgDz3v58U_oAPduljoqX9DPhh411/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                    <NavigationMenuLink href="https://drive.google.com/file/d/1NhBu6JHQtOUEFtI1P9NCvBAcaY63hLgM/view?usp=sharing" target="_blank" rel="noopener noreferrer">
                       Resume
                     </NavigationMenuLink>
                   </NavigationMenuTrigger>
