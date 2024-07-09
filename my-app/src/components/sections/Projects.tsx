@@ -12,12 +12,24 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { motion, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-const projects = [
+interface Project {
+  title: string;
+  description: string;
+  coverImage: string;
+  images: string[];
+  github: string;
+  techStack: string;
+  details: string;
+  devpost?: string;
+  badge?: string;
+}
+
+const projects: Project[] = [
   {
     title: 'MacShuttle',
     description: 'McMaster\'s Shuttle ETA App.',
+    coverImage: './macshuttle1.png',
     images: [
-      './macshuttle1.png',
       './macshuttle2.png',
       './macshuttle3.png'
     ],
@@ -28,8 +40,8 @@ const projects = [
   {
     title: 'Critiqly',
     description: 'AI-powered, gamified code review platform.',
+    coverImage: './critiqly1.png',
     images: [
-      './critiqly1.png',
       './critiqly2.png',
       './critiqly3.png'
     ],
@@ -41,8 +53,8 @@ const projects = [
   {
     title: 'Caddie',
     description: 'MDLs Discord Bot.',
+    coverImage: './caddie1.png',
     images: [
-      './caddie1.png',
       './caddie2.png',
       './caddie3.png'
     ],
@@ -53,8 +65,8 @@ const projects = [
   {
     title: 'Pawndr',
     description: 'Journaling made easy.',
+    coverImage: 'https://via.placeholder.com/400x300',
     images: [
-      'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
     ],
@@ -66,8 +78,8 @@ const projects = [
   {
     title: 'Island Generator',
     description: 'Generates random islands.',
+    coverImage: 'https://via.placeholder.com/400x300',
     images: [
-      'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
     ],
@@ -77,9 +89,9 @@ const projects = [
   },
   {
     title: 'Verses',
-    description: 'A quiz that challenges you to answer questions about your Spotify listening habits.',
+    description: 'A quiz that challenges you to answer questions about your Spotify listening.',
+    coverImage: 'https://via.placeholder.com/400x300',
     images: [
-      'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
     ],
@@ -91,8 +103,8 @@ const projects = [
   {
     title: 'Afk Student',
     description: 'Informs you when your name gets called in a meeting through a call and SMS message.',
+    coverImage: 'https://via.placeholder.com/400x300',
     images: [
-      'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
     ],
@@ -104,8 +116,8 @@ const projects = [
   {
     title: 'StudyComb',
     description: 'A study companion app.',
+    coverImage: 'https://via.placeholder.com/400x300',
     images: [
-      'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
     ],
@@ -117,8 +129,8 @@ const projects = [
   {
     title: 'RoomE',
     description: 'A room management system.',
+    coverImage: 'https://via.placeholder.com/400x300',
     images: [
-      'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
     ],
@@ -130,8 +142,8 @@ const projects = [
   {
     title: 'Certificate Generator',
     description: 'Automatically generates certificates.',
+    coverImage: 'https://via.placeholder.com/400x300',
     images: [
-      'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
     ],
@@ -142,8 +154,8 @@ const projects = [
   {
     title: 'AI Quiz Solver',
     description: 'Solves quizzes using AI.',
+    coverImage: 'https://via.placeholder.com/400x300',
     images: [
-      'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
     ],
@@ -154,8 +166,8 @@ const projects = [
   {
     title: 'Lori\'s Grocer',
     description: 'A grocery management system.',
+    coverImage: 'https://via.placeholder.com/400x300',
     images: [
-      'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
     ],
@@ -166,8 +178,8 @@ const projects = [
   {
     title: 'Wavey',
     description: 'Makes note-taking efficient using hand gestures.',
+    coverImage: 'https://via.placeholder.com/400x300',
     images: [
-      'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
     ],
@@ -179,8 +191,8 @@ const projects = [
   {
     title: 'Student Council Sign Up Page',
     description: 'A sign-up page for student council.',
+    coverImage: 'https://via.placeholder.com/400x300',
     images: [
-      'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
     ],
@@ -191,8 +203,8 @@ const projects = [
   {
     title: 'Portfolio',
     description: 'A personal portfolio website.',
+    coverImage: 'https://via.placeholder.com/400x300',
     images: [
-      'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
     ],
@@ -259,7 +271,7 @@ export const ProjectsSection: React.FC = () => {
                     </div>
                   </div>
                   <CardDescription>{project.description}</CardDescription>
-                  <img src={project.images[0]} alt={project.title} className="w-full h-32 object-cover mt-4 rounded-t-lg" />
+                  <img src={project.coverImage} alt={project.title} className="w-full h-32 object-cover mt-4 rounded-t-lg" />
                 </CardHeader>
                 <CardFooter className="flex justify-between items-center">
                   {isDesktop ? (
