@@ -73,7 +73,8 @@ const projects: Project[] = [
     github: 'https://github.com/hack-western-2023/pawndr',
     devpost: 'https://devpost.com/software/pawndr-kvlmgj',
     techStack: 'FastAPI, MongoDB, React, Google Cloud',
-    details: 'Pawndr is a journaling app that connects with you through text and voice. Receive conversational prompts delivered to your phone, sparking meaningful reflections wherever you are and making journaling more accessible and fun.'
+    details: 'Pawndr is a journaling app that connects with you through text and voice. Receive conversational prompts delivered to your phone, sparking meaningful reflections wherever you are and making journaling more accessible and fun.',
+    badge: 'Hackathon Winner'
   },
   {
     title: 'Island Generator',
@@ -98,7 +99,8 @@ const projects: Project[] = [
     github: 'https://github.com/OmarCodes2/hackwestern',
     devpost: 'https://devpost.com/software/verses',
     techStack: 'Express, React, MongoDB',
-    details: 'Verses allows you to share your Spotify listening habits with friends and have them guess your top songs/artists by answering questions. Creates a leaderboard of your friends who have taken the quiz, ranking them by the scores they obtained on your quiz.'
+    details: 'Verses allows you to share your Spotify listening habits with friends and have them guess your top songs/artists by answering questions. Creates a leaderboard of your friends who have taken the quiz, ranking them by the scores they obtained on your quiz.',
+    badge: 'Hackathon Winner'
   },
   {
     title: 'Afk Student',
@@ -111,7 +113,8 @@ const projects: Project[] = [
     github: 'https://github.com/OmarBakr-03/AFKStudent',
     devpost: 'https://devpost.com/software/warning-lmvyx3',
     techStack: 'Python',
-    details: 'AFK Student informs you when your name gets called in a meeting through a call and SMS message, while also transcribing your meets and automatically syncing it to your Google Drive.'
+    details: 'AFK Student informs you when your name gets called in a meeting through a call and SMS message, while also transcribing your meets and automatically syncing it to your Google Drive.',
+    badge: 'Hackathon Winner'
   },
   {
     title: 'StudyComb',
@@ -124,7 +127,8 @@ const projects: Project[] = [
     github: 'https://github.com/yut-code/studycomb',
     devpost: 'https://devpost.com/software/studycomb',
     techStack: 'HTML, CSS, Tailwind CSS',
-    details: 'StudyComb helps students find study buddies, join meetings, and practice study methods like the Pomodoro technique. It also offers rooms for social games and networking, meditation practice, and a dashboard for daily tasks.'
+    details: 'StudyComb helps students find study buddies, join meetings, and practice study methods like the Pomodoro technique. It also offers rooms for social games and networking, meditation practice, and a dashboard for daily tasks.',
+    badge: 'Hackathon Winner'
   },
   {
     title: 'RoomE',
