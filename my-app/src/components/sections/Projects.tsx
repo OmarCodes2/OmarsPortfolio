@@ -40,7 +40,7 @@ const projects: Project[] = [
   {
     title: 'Critiqly',
     description: 'AI-powered, gamified code review platform.',
-    coverImage: './critiqly1.png',
+    coverImage: './critiqly.png',
     images: [
       './critiqly2.png',
       './critiqly3.png'
@@ -53,7 +53,7 @@ const projects: Project[] = [
   {
     title: 'Caddie',
     description: 'MDLs Discord Bot.',
-    coverImage: './caddie1.png',
+    coverImage: './caddie.png',
     images: [
       './caddie2.png',
       './caddie3.png'
@@ -65,7 +65,7 @@ const projects: Project[] = [
   {
     title: 'Pawndr',
     description: 'Journaling made easy.',
-    coverImage: 'https://via.placeholder.com/400x300',
+    coverImage: './pawndr.png',
     images: [
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
@@ -78,7 +78,7 @@ const projects: Project[] = [
   {
     title: 'Island Generator',
     description: 'Generates random islands.',
-    coverImage: 'https://via.placeholder.com/400x300',
+    coverImage: './islandgenerator.png',
     images: [
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
@@ -90,7 +90,7 @@ const projects: Project[] = [
   {
     title: 'Verses',
     description: 'A quiz that challenges you to answer questions about your Spotify listening.',
-    coverImage: 'https://via.placeholder.com/400x300',
+    coverImage: './verses.png',
     images: [
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
@@ -103,7 +103,7 @@ const projects: Project[] = [
   {
     title: 'Afk Student',
     description: 'Alerts  you when your name gets called in a meeting.',
-    coverImage: 'https://via.placeholder.com/400x300',
+    coverImage: './afkstudent.png',
     images: [
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
@@ -116,7 +116,7 @@ const projects: Project[] = [
   {
     title: 'StudyComb',
     description: 'A study companion app.',
-    coverImage: 'https://via.placeholder.com/400x300',
+    coverImage: './studycomb.png',
     images: [
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
@@ -129,7 +129,7 @@ const projects: Project[] = [
   {
     title: 'RoomE',
     description: 'A room management system.',
-    coverImage: 'https://via.placeholder.com/400x300',
+    coverImage: './roome.png',
     images: [
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
@@ -142,7 +142,7 @@ const projects: Project[] = [
   {
     title: 'Certificate Generator',
     description: 'Automatically generates certificates.',
-    coverImage: 'https://via.placeholder.com/400x300',
+    coverImage: './certificategenerator.png',
     images: [
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
@@ -154,7 +154,7 @@ const projects: Project[] = [
   {
     title: 'AI Quiz Solver',
     description: 'Solves quizzes using AI.',
-    coverImage: 'https://via.placeholder.com/400x300',
+    coverImage: './aiquizsolver.png',
     images: [
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
@@ -166,7 +166,7 @@ const projects: Project[] = [
   {
     title: 'Lori\'s Grocer',
     description: 'A grocery management system.',
-    coverImage: 'https://via.placeholder.com/400x300',
+    coverImage: './lorisgrocer.png',
     images: [
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
@@ -178,7 +178,7 @@ const projects: Project[] = [
   {
     title: 'Wavey',
     description: 'Makes note-taking efficient using hand gestures.',
-    coverImage: 'https://via.placeholder.com/400x300',
+    coverImage: './wavey.png',
     images: [
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
@@ -191,7 +191,7 @@ const projects: Project[] = [
   {
     title: 'Student Council Sign Up Page',
     description: 'A sign-up page for student council.',
-    coverImage: 'https://via.placeholder.com/400x300',
+    coverImage: './studentcouncilsignuppage.png',
     images: [
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
@@ -203,7 +203,7 @@ const projects: Project[] = [
   {
     title: 'Portfolio',
     description: 'A personal portfolio website.',
-    coverImage: 'https://via.placeholder.com/400x300',
+    coverImage: './portfolio.png',
     images: [
       'https://via.placeholder.com/400x300',
       'https://via.placeholder.com/400x300'
