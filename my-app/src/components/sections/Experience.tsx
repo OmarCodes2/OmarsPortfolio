@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { Card, CardHeader, CardContent, CardFooter, CardTitle, CardDescription } from '../ui/card';
+import { Card, CardHeader, CardFooter, CardTitle, CardDescription } from '../ui/card';
 import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from '../ui/drawer';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog';
 import { Button } from '../ui/button';
@@ -111,14 +111,14 @@ export const ExperienceSection: React.FC = () => {
               variants={cardVariant}
               custom={index}
             >
-              <Card className="shadow-lg">
-                <CardHeader>
+              <Card className="shadow-lg h-full flex flex-col">
+                <CardHeader className="flex-grow">
                   <img src={experience.imageUrl} alt={experience.title} className="w-full h-32 object-cover mb-4 rounded-t-lg" />
                   <CardTitle>{experience.title}</CardTitle>
                   <CardDescription>{experience.description}</CardDescription>
                   <p className="text-sm text-gray-500 mt-2">{experience.duration}</p>
                 </CardHeader>
-                <CardFooter>
+                <CardFooter className="mt-auto">
                   {isDesktop ? (
                     <Dialog>
                       <DialogTrigger asChild>
