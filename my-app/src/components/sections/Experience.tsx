@@ -14,9 +14,9 @@ const experiences = [
     title: 'Canada Life',
     description: 'Software Developer',
     details: [
-      'Conducted financial analysis and prepared reports.',
-      'Provided support to senior financial advisors.',
-      'Helped clients understand their financial options.',
+      'Automated DB refresh requests with FastAPI and SQL, boosting productivity by 80%.',
+      'Managed SAST scans and resolved 150+ critical vulnerabilities.',
+      'Implemented CI/CD pipeline for 30+ repositories, reducing deployment times by 40%.',
     ],
     imageUrl: './canadalife.png',
     duration: 'May 2024 - August 2024'
@@ -25,9 +25,9 @@ const experiences = [
     title: 'Vidyard',
     description: 'Software Developer',
     details: [
-      'Collaborated with the marketing team to develop video campaigns.',
-      'Increased video views and engagement by 30%.',
-      'Edited and produced high-quality video content.',
+      'Enhanced platform features using Javascript and Ruby.',
+      'Transitioned compute infrastructure to EKS, reducing costs by 22%.',
+      'Developed an internal AI tool for developer queries.',
     ],
     imageUrl: './vidyard.png',
     duration: 'January 2024 - April 2024'
@@ -36,9 +36,9 @@ const experiences = [
     title: 'FirstHX',
     description: 'Junior Software Developer',
     details: [
-      'Developed marketing strategies to increase brand awareness.',
-      'Analyzed data to track campaign performance and optimize strategies.',
-      'Created and presented reports to stakeholders.',
+      'Implemented Oracle Cloud deployment with Terraform.',
+      'Developed secure APIs with React, Node.js, and TypeScript.',
+      'Enhanced frontend testing with Cypress, boosting deployment efficiency.',
     ],
     imageUrl: './firsthx.png',
     duration: 'May 2023 - Dec 2023'
@@ -47,9 +47,9 @@ const experiences = [
     title: 'Prolancify',
     description: 'Full-Stack Developer, API Integrations',
     details: [
-      'Implemented new features based on user feedback.',
-      'Ensured high performance and responsiveness of applications.',
-      'Collaborated with cross-functional teams to define project requirements.',
+      'Developed a Chrome extension with OpenAI API.',
+      'Integrated Google 2-Step Verification for secure sign-in.',
+      'Implemented Stripe API for payment services.',
     ],
     imageUrl: './prolancify.png',
     duration: 'January 2023 - March 2023'
@@ -58,9 +58,9 @@ const experiences = [
     title: 'AdMass',
     description: 'Full-stack Developer',
     details: [
-      'Increased client engagement by 20%.',
-      'Collaborated with the design team to create effective ads.',
-      'Conducted market research to identify target demographics.',
+      'Launched Shopify app using React and Node.js.',
+      'Developed contact form with verification.',
+      'Rebuilt website with NextJs, improving speed by 63%.',
     ],
     imageUrl: './admass.png',
     duration: 'October 2022 - January 2023'
@@ -69,12 +69,12 @@ const experiences = [
     title: 'McMaster Design League',
     description: 'Co President',
     details: [
-      'Organized and managed design competitions and workshops.',
-      'Fostered a collaborative and creative team environment.',
-      'Mentored team members and provided guidance.',
+      'Led 60 students to organize Canada’s largest designathon.',
+      'Created a certificate generator, reducing manual effort.',
+      'Developed Discord bot to enhance team engagement.',
     ],
     imageUrl: './mdl.png',
-    duration: 'July 2022 - Present'
+    duration: 'May 2024 - Present'
   }
 ];
 
