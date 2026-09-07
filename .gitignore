@@ -1,0 +1,13 @@
+.DS_Store
+node_modules/
+.wrangler/
+restaurant-portfolio-demo/node_modules/
+restaurant-portfolio-demo/dist/
+restaurant-portfolio-demo/.wrangler/
+restaurant-portfolio-demo/public/reference/
+restaurant-portfolio-demo/public/assets/chef-idle.png
+restaurant-portfolio-demo/public/assets/menu/about.png
+restaurant-portfolio-demo/public/assets/menu/projects.png
+restaurant-portfolio-demo/public/assets/menu/skills.png
+restaurant-portfolio-demo/public/assets/poses/omar-chef-idle.png
+restaurant-portfolio-demo/public/assets/poses/omar-chef-menu.png

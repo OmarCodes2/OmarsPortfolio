@@ -1,0 +1,11 @@
+{
+  "name": "omars-portfolio-deploy",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npm ci --prefix restaurant-portfolio-demo && npm run build --prefix restaurant-portfolio-demo"
+  },
+  "devDependencies": {
+    "wrangler": "^4.129.1"
+  }
+}
