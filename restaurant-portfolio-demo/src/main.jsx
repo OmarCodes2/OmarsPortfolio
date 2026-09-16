@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.css';
 
@@ -8,7 +8,7 @@ const courses = [
     icon: '/assets/menu/about-appetizer.png?v=1',
     eyebrow: 'Appetizers',
     title: 'About Me',
-    dialogue: 'A quick introduction before the main course.',
+    dialogue: 'I’m Omar: a Toronto-based software engineer who likes turning tricky platform problems into calm, useful tools.',
     pose: 'wave',
     items: [
       { label: 'Omar Bakr', meta: 'Software engineer based in Toronto' },
@@ -22,7 +22,7 @@ const courses = [
     icon: '/assets/menu/experience.png?v=2',
     eyebrow: 'Entrées',
     title: 'Work Experience',
-    dialogue: 'The main course: production software with measurable impact.',
+    dialogue: 'Here’s the main course—shipping cloud platforms, automation, and developer tooling that teams can rely on.',
     pose: 'serving',
     items: [
       { label: 'Manulife', meta: 'Software Engineer Intern · Cloud automation, AKS, Terraform, and security · 2026' },
@@ -37,7 +37,7 @@ const courses = [
     icon: '/assets/menu/projects-dessert.png?v=1',
     eyebrow: 'Desserts',
     title: 'Projects',
-    dialogue: 'The fun part: ideas turned into products and experiments.',
+    dialogue: 'These are the experiments that escaped the kitchen: real-time apps, AI products, and a few hackathon wins.',
     pose: 'projects',
     items: [
       { label: 'MacShuttle', meta: 'Real-time shuttle ETAs · React Native, Go, PostgreSQL, AWS', href: 'https://github.com/OmarCodes2/MacShuttle' },
@@ -52,7 +52,7 @@ const courses = [
     icon: '/assets/menu/links.png?v=1',
     eyebrow: 'House Selection',
     title: 'Résumé & Links',
-    dialogue: 'Everything you need to take something home.',
+    dialogue: 'Need the formalities? My résumé, GitHub, LinkedIn, and email are all set out for you.',
     pose: 'order-pad',
     items: [
       { label: 'Résumé', meta: 'Current software engineering résumé · PDF', href: '/assets/Omar_Bakr_Resume.pdf' },
@@ -66,7 +66,7 @@ const courses = [
     icon: '/assets/menu/writing.png?v=1',
     eyebrow: 'Cocktails',
     title: 'Writing',
-    dialogue: 'A few thoughts mixed, edited, and served over ice.',
+    dialogue: 'I also write about leadership, building with AI, and why a good hackathon is still hard to beat.',
     pose: 'cookbook',
     items: [
       { label: 'Medium', meta: 'Leadership, hackathons, AI, and engineering', href: 'https://medium.com/@ItsOmarB' },
@@ -81,7 +81,7 @@ const courses = [
     icon: '/assets/menu/after-hours.png?v=1',
     eyebrow: 'After Hours',
     title: 'Beyond the Code',
-    dialogue: 'The kitchen closes; the curiosity does not.',
+    dialogue: 'When the laptop closes, I’m usually running, helping lead a design community, or finding a new thing to build.',
     pose: 'mixing',
     items: [
       { label: 'McMaster Design League', meta: 'Co-President · helped lead 60 students and Canada’s largest designathon' },
@@ -108,6 +108,125 @@ function useMediaQuery(query) {
   return matches;
 }
 
+function TavernMusic({ isDesktop }) {
+  const [isMuted, setIsMuted] = useState(false);
+  const audioRef = useRef(null);
+  const mutedRef = useRef(isMuted);
+
+  useEffect(() => {
+    mutedRef.current = isMuted;
+    if (isMuted) audioRef.current?.stop();
+  }, [isMuted]);
+
+  useEffect(() => {
+    if (!isDesktop) {
+      audioRef.current?.stop();
+      audioRef.current = null;
+      return undefined;
+    }
+
+    let started = false;
+    const startMusic = () => {
+      if (mutedRef.current) return;
+      if (started) {
+        audioRef.current?.resume();
+        return;
+      }
+      started = true;
+
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      const context = new AudioContext();
+      const master = context.createGain();
+      master.gain.value = 0.042;
+      master.connect(context.destination);
+
+      const reverb = context.createConvolver();
+      const impulse = context.createBuffer(2, context.sampleRate * 1.65, context.sampleRate);
+      for (let channel = 0; channel < impulse.numberOfChannels; channel += 1) {
+        const data = impulse.getChannelData(channel);
+        for (let index = 0; index < data.length; index += 1) {
+          data[index] = (Math.random() * 2 - 1) * ((data.length - index) / data.length) ** 2.4;
+        }
+      }
+      reverb.buffer = impulse;
+      reverb.connect(master);
+      context.resume().catch(() => {});
+
+      const melody = [7, 9, 11, 9, 7, 4, 5, 7, 9, 11, 12, 11, 9, 7, 5, 4, 2, 4, 7, 9, 7, 5, 4, 2];
+      const roots = [0, 5, 7, 4, 2, 5, 0, 4];
+      const scale = [146.83, 164.81, 174.61, 196, 220, 233.08, 261.63, 293.66, 329.63, 349.23, 392, 440, 493.88];
+      let step = 0;
+      let timer;
+
+      const note = (frequency, when, length, volume, type = 'triangle', attack = 0.018) => {
+        const oscillator = context.createOscillator();
+        const gain = context.createGain();
+        oscillator.type = type;
+        oscillator.frequency.setValueAtTime(frequency, when);
+        gain.gain.setValueAtTime(0.0001, when);
+        gain.gain.exponentialRampToValueAtTime(volume, when + attack);
+        gain.gain.exponentialRampToValueAtTime(0.0001, when + length);
+        oscillator.connect(gain).connect(master);
+        gain.connect(reverb);
+        oscillator.start(when);
+        oscillator.stop(when + length + 0.03);
+      };
+
+      const playBar = () => {
+        const now = context.currentTime + 0.04;
+        const root = roots[step % roots.length];
+        const chord = [root, Math.min(root + 4, 12), Math.min(root + 7, 12)];
+        chord.forEach((pitch, index) => note(scale[pitch], now + index * 0.11, 2.7, 0.09, 'triangle', 0.16));
+        for (let beat = 0; beat < 3; beat += 1) {
+          const pitch = melody[(step * 3 + beat) % melody.length];
+          note(scale[pitch], now + beat * 0.9, 0.82, 0.11, 'sine', 0.07);
+        }
+        note(scale[root] / 2, now, 2.65, 0.12, 'sine', 0.12);
+        step += 1;
+      };
+
+      playBar();
+      timer = window.setInterval(playBar, 2700);
+      audioRef.current = {
+        resume: () => context.resume().catch(() => {}),
+        stop: () => {
+          if (!started) return;
+          started = false;
+          window.clearInterval(timer);
+          master.gain.cancelScheduledValues(context.currentTime);
+          master.gain.setTargetAtTime(0.0001, context.currentTime, 0.08);
+          window.setTimeout(() => context.close(), 350);
+          audioRef.current = null;
+        },
+      };
+    };
+
+    startMusic();
+    window.addEventListener('pointerdown', startMusic);
+    return () => {
+      window.removeEventListener('pointerdown', startMusic);
+      audioRef.current?.stop();
+      audioRef.current = null;
+    };
+  }, [isDesktop]);
+
+  if (!isDesktop) return null;
+
+  return (
+    <button
+      className="music-toggle"
+      type="button"
+      aria-pressed={isMuted}
+      aria-label={isMuted ? 'Unmute tavern ambience' : 'Mute tavern ambience'}
+      onPointerDown={() => { mutedRef.current = !isMuted; }}
+      onClick={() => setIsMuted((muted) => !muted)}
+    >
+      <span aria-hidden="true">{isMuted ? '♫̸' : '♫'}</span>
+      {isMuted ? 'Ambience off' : 'Mute ambience'}
+    </button>
+  );
+}
+
 function App() {
   const [activeId, setActiveId] = useState('about');
   const [welcomed, setWelcomed] = useState(false);
@@ -115,10 +234,20 @@ function App() {
   const isCompactLayout = useMediaQuery('(max-width: 980px)');
   const activeCourse = courses.find((course) => course.id === activeId);
   const pose = isCourseOpen ? activeCourse.pose : 'serving';
-  const dialogue = welcomed ? activeCourse.dialogue : "Welcome to Omar's Restaurant! I've prepared a menu of the work I'm proud of. Pick a course and dig in.";
+  const dialogue = !welcomed
+    ? "Welcome to Omar’s Restaurant. I’ve put together a few courses from my life in software—where would you like to begin?"
+    : isCourseOpen
+      ? activeCourse.dialogue
+      : 'The menu is open. I can point you toward the work, projects, or the person behind the apron.';
+  const openCourse = (courseId) => {
+    setActiveId(courseId);
+    setWelcomed(true);
+    setIsCourseOpen(true);
+  };
 
   return (
     <main className="site-shell">
+      <TavernMusic isDesktop={!isCompactLayout} />
       <div className="restaurant">
         <header className="brand-sign">
           <img src="/assets/signs/omars-restaurant-sign.png" alt="Omar's Restaurant" />
@@ -133,9 +262,19 @@ function App() {
               <div className="speech-bubble">
                 <span className="bubble-label">Chef Omar</span>
                 <p>{dialogue}</p>
-                <button className="continue" onClick={() => setWelcomed(true)}>
-                  {welcomed ? 'Continue ▶' : 'See the specials ▶'}
-                </button>
+                <div className="dialogue-options">
+                  {!welcomed ? (
+                    <button className="continue" onClick={() => setWelcomed(true)}>Show me around ▶</button>
+                  ) : isCourseOpen ? (
+                    <button className="continue" onClick={() => setIsCourseOpen(false)}>Browse another course ↩</button>
+                  ) : (
+                    <>
+                      <button className="continue" onClick={() => openCourse('experience')}>What have you worked on?</button>
+                      <button className="continue" onClick={() => openCourse('projects')}>Show me your projects</button>
+                      <button className="continue" onClick={() => openCourse('about')}>Tell me about yourself</button>
+                    </>
+                  )}
+                </div>
               </div>
             </div>
           )}
@@ -171,7 +310,7 @@ function App() {
                   <button
                     className="menu-item"
                     key={course.id}
-                    onClick={() => { setActiveId(course.id); setWelcomed(true); setIsCourseOpen(true); }}
+                    onClick={() => openCourse(course.id)}
                   >
                     <span className="course-icon"><img src={course.icon} alt="" /></span>
                     <span className="course-copy"><strong>{course.eyebrow}</strong></span>
