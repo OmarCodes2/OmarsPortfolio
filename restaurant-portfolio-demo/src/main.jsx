@@ -325,7 +325,7 @@ function App() {
         </section>
 
         <footer>
-          <a className="resume-button" href="/assets/Omar_Bakr_Resume.pdf" target="_blank" rel="noreferrer">View résumé <b>↗</b></a>
+          <a className="resume-button" href="https://drive.google.com/file/d/17t9hmQUnBBngEDbJ0OR7KbU442fHaVzz/view?usp=sharing" target="_blank" rel="noreferrer">View résumé <b>↗</b></a>
         </footer>
       </div>
     </main>
